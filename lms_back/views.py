@@ -50,3 +50,8 @@ def signup_view(request):
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)}, status=500)
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+
+@csrf_exempt
+def auth_status(request):
+    return JsonResponse({'authenticated': request.user.is_authenticated})
